@@ -184,7 +184,7 @@
             </p>
             <p class="font-serif italic text-gray-500 mb-10">Orabi City, Egypt</p>
             
-            <a href="https://maps.app.goo.gl/vh25bJSByLWXDvdCA?g_st=ic" target="_blank" class="inline-flex items-center gap-3 bg-sage hover:bg-sageDark text-white px-10 py-4 rounded-2xl font-sans uppercase tracking-widest text-xs transition-all duration-300 mb-16 shadow-md hover:shadow-lg">
+            <a href="https://maps.google.com" target="_blank" class="inline-flex items-center gap-3 bg-sage hover:bg-sageDark text-white px-10 py-4 rounded-2xl font-sans uppercase tracking-widest text-xs transition-all duration-300 mb-16 shadow-md hover:shadow-lg">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                 OPEN IN GOOGLE MAPS
             </a>
@@ -375,39 +375,43 @@
             }
         }, 1000);
 
-        // --- كود إرسال البيانات لجوجل شيت المحدث ---
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzv6eWU3NTVSKb_3PEEZF1PFgR7VHxQizQlPuTVIvHLgDLyU0nruLNXR2hTq9N6tg0/exec'
-        const form = document.getElementById('rsvpForm')
-        const submitBtn = document.getElementById('submitBtn')
+        // --- كود إرسال البيانات لجوجل شيت ---
+        // تم وضع اللينك الخاص بك هنا بنجاح
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzv6eWU3NTVSKb_3PEEZF1PFgR7VHxQizQlPuTVIvHLgDLyU0nruLNXR2hTq9N6tg0/exec';
+        
+        const form = document.getElementById('rsvpForm');
+        const submitBtn = document.getElementById('submitBtn');
 
         form.addEventListener('submit', e => {
-            e.preventDefault()
+            e.preventDefault();
             
-            submitBtn.disabled = true
-            submitBtn.innerText = 'SENDING...'
-            submitBtn.classList.add('loading')
+            // تغيير شكل الزر وقت التحميل
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'SENDING...';
+            submitBtn.classList.add('loading');
 
+            // تجميع البيانات
             const params = new URLSearchParams(new FormData(form));
 
             fetch(scriptURL, { 
                 method: 'POST', 
-                mode: 'no-cors', 
+                mode: 'no-cors', // مهم عشان يشتغل على GitHub Pages
                 body: params
             })
             .then(() => {
-                document.getElementById('successModal').classList.remove('hidden')
-                form.reset()
-                submitBtn.disabled = false
-                submitBtn.innerText = 'SUBMIT'
-                submitBtn.classList.remove('loading')
+                document.getElementById('successModal').classList.remove('hidden');
+                form.reset();
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'SUBMIT';
+                submitBtn.classList.remove('loading');
             })
             .catch(error => {
-                console.error('Error!', error.message)
-                submitBtn.disabled = false
-                submitBtn.innerText = 'SUBMIT'
-                submitBtn.classList.remove('loading')
-            })
-        })
+                console.error('Error!', error.message);
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'SUBMIT';
+                submitBtn.classList.remove('loading');
+            });
+        });
     </script>
 </body>
 </html>
