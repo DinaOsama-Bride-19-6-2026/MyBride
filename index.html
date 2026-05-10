@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hossam & Dina | Wedding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- استيراد الخطوط المشابهة للفيديو والتصميم الجديد -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        script: ['"Alex Brush"', 'cursive'], 
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'], 
+                    },
+                    colors: {
+                        cream: '#FDFBF6', 
+                        sage: '#8A9A86',  
+                        sageDark: '#70806c',
+                        textDark: '#2C332A',
+                        accentPink: '#d4a3a3',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #FDFBF6;
+            color: #2C332A;
+            scroll-behavior: smooth;
+        }
+
+        /* تنسيق حقول الإدخال */
+        input[type="text"], input[type="tel"] {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #A0AAB2;
+            border-radius: 0;
+            padding: 5px 0;
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        input[type="text"]:focus, input[type="tel"]:focus {
+            outline: none;
+            border-bottom: 1px solid #8A9A86;
+        }
+        
+        input[type="radio"] {
+            accent-color: #8A9A86;
+            width: 1.2rem;
+            height: 1.2rem;
+            margin-right: 0.5rem;
+            cursor: pointer;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-down {
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* تأثير التحميل على الزر */
+        .loading {
+            opacity: 0.7;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="font-sans text-center overflow-x-hidden">
+
+    <!-- Section 1: Monogram -->
+    <section class="min-h-screen flex flex-col items-center justify-center relative fade-in">
+        <!-- تم استبدال النص بصورة اللوجو -->
+        <img src="logo.png" alt="HD Logo" class="w-64 md:w-96 mb-8 mix-blend-multiply opacity-80">
+        
+        <div class="absolute bottom-24 scroll-down cursor-pointer" onclick="document.getElementById('main-content').scrollIntoView({behavior: 'smooth'})">
+            <p class="font-serif italic text-gray-400 mb-2 text-sm tracking-widest text-center">Scroll Down to View More</p>
+            <svg class="w-5 h-5 mx-auto text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+    </section>
+
+    <div id="main-content">
+        <!-- Section 2: Main Illustration & Intro -->
+        <section class="py-16 px-4 fade-in max-w-4xl mx-auto">
+            <img src="hotel building.png" 
+                 alt="Wedding Venue and Couple" 
+                 class="w-full max-w-2xl mx-auto mb-10 rounded-lg shadow-sm"
+                 style="mix-blend-mode: multiply;">
+
+            <h2 class="font-script text-6xl md:text-8xl mb-6">Hossam and Dina</h2>
+            <p class="font-serif italic text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+                Together with our families, we request the honor of your presence at our wedding.
+            </p>
+            
+            <p class="font-sans uppercase tracking-widest text-sm md:text-base font-medium mb-8">
+                19th of June 2026
+            </p>
+            
+            <button onclick="document.getElementById('rsvp-section').scrollIntoView({behavior: 'smooth'})" 
+                    class="bg-sage hover:bg-sageDark text-white font-sans uppercase tracking-widest text-xs py-3 px-10 rounded-full transition-colors duration-300 shadow-sm">
+                RSVP HERE
+            </button>
+        </section>
+
+        <!-- Section 3: Countdown -->
+        <section class="py-16 fade-in border-t border-gray-100 max-w-4xl mx-auto mt-10">
+            <div class="flex justify-center items-center gap-6 md:gap-16">
+                <div class="flex flex-col items-center">
+                    <span id="days" class="text-4xl md:text-5xl font-serif mb-2">00</span>
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-gray-400">Days</span>
+                </div>
+                <div class="w-px h-12 bg-gray-200"></div>
+                <div class="flex flex-col items-center">
+                    <span id="hours" class="text-4xl md:text-5xl font-serif mb-2">00</span>
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-gray-400">Hours</span>
+                </div>
+                <div class="w-px h-12 bg-gray-200"></div>
+                <div class="flex flex-col items-center">
+                    <span id="minutes" class="text-4xl md:text-5xl font-serif mb-2">00</span>
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-gray-400">Minutes</span>
+                </div>
+                <div class="w-px h-12 bg-gray-200"></div>
+                <div class="flex flex-col items-center">
+                    <span id="seconds" class="text-4xl md:text-5xl font-serif mb-2">00</span>
+                    <span class="text-[10px] uppercase tracking-[0.2em] text-gray-400">Seconds</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Map -->
+        <section class="py-24 px-4 fade-in max-w-4xl mx-auto flex flex-col items-center">
+            <div class="mb-8 flex flex-col items-center">
+                <div class="text-sage opacity-60 text-3xl mb-1 italic">
+                    <svg class="w-16 h-10 mx-auto" viewBox="0 0 100 40" fill="currentColor">
+                        <path d="M50 5 C55 15 45 25 50 35 M50 5 C45 15 55 25 50 35 M50 15 L40 10 M50 20 L60 15 M50 25 L40 22 M50 30 L60 28" stroke="currentColor" fill="none" stroke-width="1"/>
+                        <path d="M50 2 Q52 0 54 2 Q56 4 50 10 Q44 4 46 2 Q48 0 50 2" fill="#d4a3a3"/>
+                    </svg>
+                </div>
+            </div>
+
+            <h2 class="font-serif text-4xl md:text-5xl text-sageDark mb-2 leading-tight">
+                Find Your Way
+            </h2>
+            <h2 class="font-serif text-4xl md:text-5xl text-sageDark mb-6 flex items-center justify-center gap-2">
+                to Our <span class="font-script lowercase text-5xl md:text-6xl pt-2">Happy Place</span>
+                <span class="text-accentPink text-2xl">♥</span>
+            </h2>
+
+            <p class="font-script text-2xl md:text-3xl text-gray-500 mb-10 max-w-xl mx-auto leading-snug">
+                We can't wait to celebrate <br> surrounded by love and greenery.
+            </p>
+            
+            <div class="w-full max-w-md h-px bg-gray-200 mb-10 relative">
+                <div class="absolute left-1/2 -top-1.5 -translate-x-1/2 text-accentPink bg-cream px-2 text-xs">♥</div>
+            </div>
+
+            <p class="font-sans uppercase tracking-[0.2em] text-accentPink text-sm font-semibold mb-2">
+                THE VINE WEDDING VENUE - ORABI
+            </p>
+            <p class="font-serif italic text-gray-500 mb-10">Orabi City, Egypt</p>
+            
+            <a href="https://maps.app.goo.gl/vh25bJSByLWXDvdCA?g_st=ic" target="_blank" class="inline-flex items-center gap-3 bg-sage hover:bg-sageDark text-white px-10 py-4 rounded-2xl font-sans uppercase tracking-widest text-xs transition-all duration-300 mb-16 shadow-md hover:shadow-lg">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                OPEN IN GOOGLE MAPS
+            </a>
+
+            <!-- صورة الخريطة المائية أسفل الزر -->
+            <img src="map.jpg" 
+                 alt="Illustrated Wedding Map" 
+                 class="w-full max-w-3xl mx-auto mix-blend-multiply mb-12">
+
+            <p class="font-script text-3xl md:text-4xl text-gray-500 flex items-center justify-center gap-2">
+                <span class="text-accentPink text-xl">♥</span> A little garden,<br> a lot of love, and you. <span class="text-accentPink text-xl">♥</span>
+            </p>
+        </section>
+
+        <!-- Section 5: Notes -->
+        <section class="py-24 px-4 fade-in max-w-3xl mx-auto border-t border-gray-100 mt-20">
+            <h2 class="font-script text-6xl md:text-8xl mb-16 text-sageDark">Notes</h2>
+
+            <div class="space-y-16 text-center">
+                <!-- Arrive by 6:00 p.m. -->
+                <div>
+                    <h3 class="font-serif text-2xl text-sageDark mb-4">Arrive by 6:00 p.m.</h3>
+                    <p class="font-sans text-sm text-gray-500 leading-relaxed max-w-xl mx-auto">
+                        Our celebration begins promptly at 6:00 p.m. <br>
+                        We’d love for you to arrive on time and be part of every special moment from the very beginning.
+                    </p>
+                </div>
+
+                <!-- Capture & Share the Joy -->
+                <div>
+                    <h3 class="font-serif text-2xl text-sageDark mb-4 flex items-center justify-center gap-2">
+                        Capture & Share the Joy <span class="text-accentPink font-script text-3xl pt-1">♥</span>
+                    </h3>
+                    <p class="font-sans text-sm text-gray-500 leading-relaxed max-w-xl mx-auto">
+                        Please feel free to capture all the beautiful moments throughout the evening—photos, videos, candid laughs, and happy tears. <br>
+                        We’d love for you to share your favorite memories with us so we can relive this special day through your eyes.
+                    </p>
+                </div>
+
+                <!-- Save Us a Dance -->
+                <div>
+                    <h3 class="font-serif text-2xl text-sageDark mb-4">Save Us a Dance</h3>
+                    <p class="font-sans text-sm text-gray-500 leading-relaxed max-w-xl mx-auto">
+                        After the heartfelt moments come the unforgettable ones… <br>
+                        So bring your best energy, your brightest smiles, and your favorite dance moves.
+                    </p>
+                </div>
+
+                <!-- Parking Available -->
+                <div>
+                    <h3 class="font-serif text-2xl text-sageDark mb-4">Parking Available</h3>
+                    <p class="font-sans text-sm text-gray-500 leading-relaxed max-w-xl mx-auto">
+                        For your comfort and convenience, parking will be available at the venue.
+                    </p>
+                </div>
+
+                <!-- RSVP Reminder -->
+                <div>
+                    <h3 class="font-serif text-2xl text-sageDark mb-4">RSVP Reminder</h3>
+                    <p class="font-sans text-sm text-gray-500 leading-relaxed max-w-xl mx-auto">
+                        Kindly confirm your attendance at your earliest convenience so we can celebrate this special day with everyone we love.
+                    </p>
+                </div>
+
+                <!-- Your Presence Is Our Gift -->
+                <div class="pt-8">
+                    <h3 class="font-serif text-2xl text-sageDark mb-4 flex items-center justify-center gap-2">
+                        Your Presence Is Our Gift <span class="text-accentPink font-script text-3xl pt-1">♥</span>
+                    </h3>
+                    <p class="font-script text-2xl text-gray-500 leading-relaxed max-w-2xl mx-auto">
+                        Having you with us on this day, sharing your love, prayers, and joyful hearts, is truly the greatest gift we could ask for.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Dresscode -->
+        <section class="py-24 px-4 fade-in max-w-4xl mx-auto border-t border-gray-100">
+            <h2 class="font-script text-6xl md:text-8xl mb-8 text-sageDark">Dresscode</h2>
+            <h3 class="font-serif text-2xl text-sageDark mb-4">Summer elegance with a touch of color</h3>
+            <p class="font-serif italic text-gray-600 mb-10 max-w-2xl mx-auto">
+                Think light fabrics, joyful tones, and celebration-ready looks—dress in whatever makes you feel your most beautiful.
+            </p>
+            
+            <img src="dresscode.jpg" 
+                 alt="Dresscode Illustration" 
+                 class="w-full max-w-3xl mx-auto mix-blend-multiply opacity-80">
+        </section>
+
+        <!-- Section 7: RSVP Form -->
+        <section id="rsvp-section" class="py-24 px-4 fade-in max-w-2xl mx-auto">
+            <h2 class="font-script text-5xl md:text-7xl mb-12">RSVP</h2>
+            <form id="rsvpForm" class="text-left space-y-10">
+                
+                <div class="flex flex-col md:flex-row md:items-end gap-4">
+                    <!-- غيرت الخط لـ font-serif text-2xl بدل الخط المشبك -->
+                    <label class="font-serif text-2xl text-gray-800 md:w-1/3">Full Name</label>
+                    <input type="text" name="Name" placeholder="name goes here" required class="md:w-2/3">
+                </div>
+
+                <div class="flex flex-col md:flex-row md:items-end gap-4">
+                    <label class="font-serif text-2xl text-gray-800 md:w-1/3">Mobile Number</label>
+                    <input type="tel" name="Phone" placeholder="number goes here" required class="md:w-2/3">
+                </div>
+
+                <div class="flex flex-col md:flex-row md:items-start gap-4 pt-4">
+                    <label class="font-serif text-2xl text-gray-800 md:w-1/3">Attendance</label>
+                    <div class="md:w-2/3 space-y-3 font-sans text-sm text-gray-600 pt-2">
+                        <label class="flex items-center group cursor-pointer">
+                            <input type="radio" name="Attendance" value="Yes, I'll be there!" required>
+                            <span class="group-hover:text-sage transition-colors ml-2">Yes, I'll be there!</span>
+                        </label>
+                        <label class="flex items-center group cursor-pointer">
+                            <input type="radio" name="Attendance" value="Sorry, I can't make it.">
+                            <span class="group-hover:text-sage transition-colors ml-2">Sorry, I can't make it.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="text-center pt-8">
+                    <button type="submit" id="submitBtn" class="bg-sage hover:bg-sageDark text-white font-sans uppercase tracking-widest text-xs py-4 px-16 rounded-full transition-all duration-300 shadow-md">
+                        SUBMIT
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-8 pb-16 text-center text-[10px] text-gray-300 font-sans tracking-[0.3em] uppercase">
+            © 2026 Hossam & Dina
+        </footer>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-cream/95 z-50 hidden flex items-center justify-center p-6 transition-opacity backdrop-blur-sm">
+        <div class="text-center max-w-md">
+            <h3 class="font-script text-6xl text-sage mb-4">Thank You</h3>
+            <p class="font-serif italic text-gray-600 mb-8">Your response has been received.</p>
+            <button onclick="document.getElementById('successModal').classList.add('hidden')" class="border border-sage text-sage px-10 py-2 rounded-full uppercase tracking-widest text-xs hover:bg-sage hover:text-white transition-all duration-300">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // تم تعديل وقت الفرح ليكون الساعة 6 مساءً (18:00:00)
+        const weddingDate = new Date("Jun 19, 2026 18:00:00").getTime();
+
+        const countdownTimer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+
+            if (distance < 0) {
+                clearInterval(countdownTimer);
+                document.getElementById("days").innerText = "0";
+                document.getElementById("hours").innerText = "0";
+                document.getElementById("minutes").innerText = "0";
+                document.getElementById("seconds").innerText = "0";
+            }
+        }, 1000);
+
+        // --- كود إرسال البيانات لجوجل شيت المحدث ---
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzv6eWU3NTVSKb_3PEEZF1PFgR7VHxQizQlPuTVIvHLgDLyU0nruLNXR2hTq9N6tg0/exec'
+        const form = document.getElementById('rsvpForm')
+        const submitBtn = document.getElementById('submitBtn')
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            
+            submitBtn.disabled = true
+            submitBtn.innerText = 'SENDING...'
+            submitBtn.classList.add('loading')
+
+            const params = new URLSearchParams(new FormData(form));
+
+            fetch(scriptURL, { 
+                method: 'POST', 
+                mode: 'no-cors', 
+                body: params
+            })
+            .then(() => {
+                document.getElementById('successModal').classList.remove('hidden')
+                form.reset()
+                submitBtn.disabled = false
+                submitBtn.innerText = 'SUBMIT'
+                submitBtn.classList.remove('loading')
+            })
+            .catch(error => {
+                console.error('Error!', error.message)
+                submitBtn.disabled = false
+                submitBtn.innerText = 'SUBMIT'
+                submitBtn.classList.remove('loading')
+            })
+        })
+    </script>
+</body>
+</html>
