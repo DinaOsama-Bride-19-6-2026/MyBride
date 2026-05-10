@@ -95,7 +95,7 @@
 
     <!-- Section 1: Monogram -->
     <section class="min-h-screen flex flex-col items-center justify-center relative fade-in">
-        <!-- تم استبدال النص بصورة اللوجو -->
+        <!-- ضع صورة اللوجو هنا -->
         <img src="logo.png" alt="HD Logo" class="w-64 md:w-96 mb-8 mix-blend-multiply opacity-80">
         
         <div class="absolute bottom-24 scroll-down cursor-pointer" onclick="document.getElementById('main-content').scrollIntoView({behavior: 'smooth'})">
@@ -134,17 +134,17 @@
                     <span id="days" class="text-4xl md:text-5xl font-serif mb-2">00</span>
                     <span class="text-[10px] uppercase tracking-[0.2em] text-gray-400">Days</span>
                 </div>
-                <div class="w-px h-12 bg-gray-200"></div>
+                <div class="w-px h-12 bg-gray-300"></div>
                 <div class="flex flex-col items-center">
                     <span id="hours" class="text-4xl md:text-5xl font-serif mb-2">00</span>
                     <span class="text-[10px] uppercase tracking-[0.2em] text-gray-400">Hours</span>
                 </div>
-                <div class="w-px h-12 bg-gray-200"></div>
+                <div class="w-px h-12 bg-gray-300"></div>
                 <div class="flex flex-col items-center">
                     <span id="minutes" class="text-4xl md:text-5xl font-serif mb-2">00</span>
                     <span class="text-[10px] uppercase tracking-[0.2em] text-gray-400">Minutes</span>
                 </div>
-                <div class="w-px h-12 bg-gray-200"></div>
+                <div class="w-px h-12 bg-gray-300"></div>
                 <div class="flex flex-col items-center">
                     <span id="seconds" class="text-4xl md:text-5xl font-serif mb-2">00</span>
                     <span class="text-[10px] uppercase tracking-[0.2em] text-gray-400">Seconds</span>
@@ -153,7 +153,7 @@
         </section>
 
         <!-- Section 4: Map -->
-        <section class="py-24 px-4 fade-in max-w-4xl mx-auto flex flex-col items-center">
+        <section class="py-24 px-4 fade-in max-w-4xl mx-auto flex flex-col items-center text-center">
             <div class="mb-8 flex flex-col items-center">
                 <div class="text-sage opacity-60 text-3xl mb-1 italic">
                     <svg class="w-16 h-10 mx-auto" viewBox="0 0 100 40" fill="currentColor">
@@ -182,9 +182,9 @@
             <p class="font-sans uppercase tracking-[0.2em] text-accentPink text-sm font-semibold mb-2">
                 THE VINE WEDDING VENUE - ORABI
             </p>
-            <p class="font-serif italic text-gray-500 mb-10">Orabi City, Egypt</p>
+            <p class="font-serif italic text-gray-500 mb-10 text-center">Orabi City, Egypt</p>
             
-            <a href="https://maps.google.com" target="_blank" class="inline-flex items-center gap-3 bg-sage hover:bg-sageDark text-white px-10 py-4 rounded-2xl font-sans uppercase tracking-widest text-xs transition-all duration-300 mb-16 shadow-md hover:shadow-lg">
+            <a href="https://maps.app.goo.gl/vh25bJSByLWXDvdCA?g_st=ic" target="_blank" class="inline-flex items-center gap-3 bg-sage hover:bg-sageDark text-white px-10 py-4 rounded-2xl font-sans uppercase tracking-widest text-xs transition-all duration-300 mb-16 shadow-md hover:shadow-lg">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                 OPEN IN GOOGLE MAPS
             </a>
@@ -254,7 +254,7 @@
                     <h3 class="font-serif text-2xl text-sageDark mb-4 flex items-center justify-center gap-2">
                         Your Presence Is Our Gift <span class="text-accentPink font-script text-3xl pt-1">♥</span>
                     </h3>
-                    <p class="font-script text-2xl text-gray-500 leading-relaxed max-w-2xl mx-auto">
+                    <p class="font-sans text-sm text-gray-500 leading-relaxed max-w-xl mx-auto">
                         Having you with us on this day, sharing your love, prayers, and joyful hearts, is truly the greatest gift we could ask for.
                     </p>
                 </div>
@@ -276,11 +276,10 @@
 
         <!-- Section 7: RSVP Form -->
         <section id="rsvp-section" class="py-24 px-4 fade-in max-w-2xl mx-auto">
-            <h2 class="font-script text-5xl md:text-7xl mb-12">RSVP</h2>
+            <h2 class="font-script text-5xl md:text-7xl mb-12 text-center">RSVP</h2>
             <form id="rsvpForm" class="text-left space-y-10">
                 
                 <div class="flex flex-col md:flex-row md:items-end gap-4">
-                    <!-- غيرت الخط لـ font-serif text-2xl بدل الخط المشبك -->
                     <label class="font-serif text-2xl text-gray-800 md:w-1/3">Full Name</label>
                     <input type="text" name="Name" placeholder="name goes here" required class="md:w-2/3">
                 </div>
@@ -349,7 +348,6 @@
             observer.observe(element);
         });
 
-        // تم تعديل وقت الفرح ليكون الساعة 6 مساءً (18:00:00)
         const weddingDate = new Date("Jun 19, 2026 18:00:00").getTime();
 
         const countdownTimer = setInterval(function() {
@@ -374,44 +372,45 @@
                 document.getElementById("seconds").innerText = "0";
             }
         }, 1000);
-
-        // --- كود إرسال البيانات لجوجل شيت ---
-        // تم وضع اللينك الخاص بك هنا بنجاح
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbzv6eWU3NTVSKb_3PEEZF1PFgR7VHxQizQlPuTVIvHLgDLyU0nruLNXR2hTq9N6tg0/exec';
-        
-        const form = document.getElementById('rsvpForm');
-        const submitBtn = document.getElementById('submitBtn');
+        // --- كود إرسال البيانات لجوجل شيت المحدث ---
+        const scriptURL = 'https://script.google.com/macros/s/AKfycby4OuGwloLsPOx6lhJtXAnWgkkiGiYR-x76njoDLIJT1SpyIuS2U2wifRYCKqMMn5W8/exec'
+        const form = document.getElementById('rsvpForm')
+        const submitBtn = document.getElementById('submitBtn')
 
         form.addEventListener('submit', e => {
-            e.preventDefault();
+            e.preventDefault()
             
-            // تغيير شكل الزر وقت التحميل
-            submitBtn.disabled = true;
-            submitBtn.innerText = 'SENDING...';
-            submitBtn.classList.add('loading');
+            submitBtn.disabled = true
+            submitBtn.innerText = 'SENDING...'
+            submitBtn.classList.add('loading')
 
-            // تجميع البيانات
-            const params = new URLSearchParams(new FormData(form));
+            // تحويل البيانات لـ URLSearchParams لضمان وصولها بشكل صحيح لجوجل
+            const formData = new FormData(form);
+            const params = new URLSearchParams();
+            for (const pair of formData.entries()) {
+                params.append(pair[0], pair[1]);
+            }
 
             fetch(scriptURL, { 
                 method: 'POST', 
-                mode: 'no-cors', // مهم عشان يشتغل على GitHub Pages
+                mode: 'no-cors', // مهم جداً لتجنب مشاكل الـ CORS مع جوجل
                 body: params
             })
             .then(() => {
-                document.getElementById('successModal').classList.remove('hidden');
-                form.reset();
-                submitBtn.disabled = false;
-                submitBtn.innerText = 'SUBMIT';
-                submitBtn.classList.remove('loading');
+                // بما أننا استخدمنا no-cors، لا يمكننا قراءة الاستجابة، لكننا سنفترض النجاح
+                document.getElementById('successModal').classList.remove('hidden')
+                form.reset()
+                submitBtn.disabled = false
+                submitBtn.innerText = 'SUBMIT'
+                submitBtn.classList.remove('loading')
             })
             .catch(error => {
-                console.error('Error!', error.message);
-                submitBtn.disabled = false;
-                submitBtn.innerText = 'SUBMIT';
-                submitBtn.classList.remove('loading');
-            });
-        });
+                console.error('Error!', error.message)
+                submitBtn.disabled = false
+                submitBtn.innerText = 'SUBMIT'
+                submitBtn.classList.remove('loading')
+            })
+        })
     </script>
 </body>
 </html>
